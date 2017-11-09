@@ -7,17 +7,42 @@
 <body>
 	<h1>Calculator Fun Time!! :)</h1>
 	<form method="post" action="calculate">
-		<input type="number" name="firstNumber" required><br> 
-		<select name="op">
-			<option value="add">+</option>
-			<option value="subtract">-</option>
-			<option value="multiply">*</option>
-			<option value="divide">/</option>
-			<option value="exponent">^</option>
-		</select><br>
-		<input type="number" name="secondNumber" required><br>
+		<input type="number" name="firstNumber" step="0.01" required><br> <select
+			name="op">
+			<option>+</option>
+			<option>-</option>
+			<option>*</option>
+			<option>/</option>
+			<option>^</option>
+		</select><br> <input type="number" name="secondNumber" step="0.01" required><br>
 		<button type="submit">Submit</button>
 	</form>
 	<p>Result is: {{ result }}</p>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>First Number</th>
+				<th>Operator</th>
+				<th>Second Number</th>
+				<th>Result</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#resultList}}
+			<tr>
+				<td>{{ firstNumber }}</td>
+				<td>{{ op }}</td>
+				<td>{{ secondNumber }}</td>
+				<td>{{ result }}</td>
+			</tr>
+			{{/resultList}}
+		</tbody>
+	</table>
+</body>
+
+
+
+
+
 </body>
 </html>

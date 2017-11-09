@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lmig.gfc.calculator.models.Calculator;
-//import com.lmig.gfc.calculator.models.Results;
+import com.lmig.gfc.calculator.models.Results;
 
 @Controller
 public class CalculatorController {
@@ -20,18 +20,20 @@ public class CalculatorController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
 		mv.addObject("result", result);
-//		mv.addObject("resultList", calc.getResultList());
+		mv.addObject("resultList", calc.getResultList());
 		return mv;
 	}
 
 	@RequestMapping("/calculate")
 	public ModelAndView calculate(String op, double firstNumber, double secondNumber) {
 		result = calc.calculate(op, firstNumber, secondNumber);
+		Results resultAdd = new Results(firstNumber, secondNumber, result, op);
+		calc.addResult(resultAdd);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
 		mv.addObject("result", result);
-//		mv.addObject("resultList", calc.getResultList());
+		mv.addObject("resultList", calc.getResultList());
 		return mv;
 	}
-
+ 
 }

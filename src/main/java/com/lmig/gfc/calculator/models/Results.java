@@ -5,6 +5,8 @@ public class Results {
 	private double secondNumber;
 	private double result;
 	private String op;
+	
+	
 	public Results(double firstNumber, double secondNumber, double result, String op) {
 		this.firstNumber = firstNumber;
 		this.secondNumber = secondNumber;

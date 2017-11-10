@@ -1,7 +1,6 @@
 package com.lmig.gfc.calculator.models;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 //This class calculates the product of two numbers, based on the data received from the consumer (controller)
 //this class also maintains a list of past results for the purpose of history tracking
@@ -48,16 +47,18 @@ public class Calculator {
 	// Collections (java.util) method is used to return the ArrayList contents in
 	// reverse order
 	public ArrayList<Results> getResultList() {
-		Collections.reverse(resultList);
 		return resultList;
 	}
 
 	// Method to add a result to the Results ArrayList, which keeps track of all
 	// results
+	//Adds result to the first index in the ArrayList (index 0)
 	public void addResult(Results result) {
-		resultList.add(result);
+		resultList.add(0,result);
+
 	}
 
+	//Method to clear the ResultList Array, which cleats the history of calculations performed
 	public void clearHistory() {
 		resultList.clear();
 	}

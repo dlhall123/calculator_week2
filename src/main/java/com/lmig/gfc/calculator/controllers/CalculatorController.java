@@ -65,7 +65,7 @@ public class CalculatorController {
 	}
 
 	// RequestMapping to add to the accumulated memory
-	@RequestMapping("/memadd")
+	@RequestMapping("/memAdd")
 	public ModelAndView memoryAdd() {
 		calc.addMemory();
 		ModelAndView mv = new ModelAndView();
@@ -76,7 +76,7 @@ public class CalculatorController {
 	}
 
 	// RequestMapping to subtract from the accumulated memory
-	@RequestMapping("/memsub")
+	@RequestMapping("/memSub")
 	public ModelAndView memorySub() {
 		calc.removeMemory();
 		ModelAndView mv = new ModelAndView();
@@ -87,7 +87,7 @@ public class CalculatorController {
 	}
 
 	// RequestMapping to clear the accumulated memory
-	@RequestMapping("/memclear")
+	@RequestMapping("/memClear")
 	public ModelAndView memoryClear() {
 		calc.clearMemory();
 		ModelAndView mv = new ModelAndView();
@@ -98,7 +98,7 @@ public class CalculatorController {
 	}
 
 	// RequestMapping to recall the accumulated memory
-	@RequestMapping("/memrecall")
+	@RequestMapping("/memRecall")
 	public ModelAndView memoryRecall() {
 		calc.getMemory();
 		ModelAndView mv = new ModelAndView();

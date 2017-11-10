@@ -19,14 +19,16 @@ public class CalculatorController {
 	// RequestMapping for when the user navigates to localhost:8080
 	// Creates and instance of the ModelAndView class and returns it
 	// Sets the view to calculator.html
-	// adds the result and calls a method to get the list of past results (will be
-	// empty when first run)
+	// adds the result and Calculator class instance to the ModelAndView
 	@RequestMapping("/")
 	public ModelAndView calculator() {
 		ModelAndView mv = new ModelAndView();
+		clearHistory(); //Clear the history when navigating back to "/"
+		memoryClear();  //Clear the memory when navigating back to "/"
+		result = 0; //Set result = 0 when navigating back to "/"
 		mv.setViewName("calculator");
 		mv.addObject("result", result);
-		mv.addObject("resultList", calc.getResultList());
+		mv.addObject("calculator", calc);
 		return mv;
 	}
 
@@ -45,19 +47,67 @@ public class CalculatorController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
 		mv.addObject("result", result);
-		mv.addObject("resultList", calc.getResultList());
+		mv.addObject("calculator", calc);
 		return mv;
 	}
 
 	// RequestMapping to clear the ArrayList containing history
 	@RequestMapping("/clear")
-	public ModelAndView clear() {
+	public ModelAndView clearHistory() {
 		calc.clearHistory();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
 		mv.addObject("result", result);
-		mv.addObject("resultList", calc.getResultList());
+		mv.addObject("calculator", calc);
 		return mv;
+	}
+
+	// RequestMapping to add to the accumulated memory
+	@RequestMapping("/memadd")
+	public ModelAndView memoryAdd() {
+		calc.addMemory(result);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("calculator");
+		mv.addObject("result", result);
+		mv.addObject("calculator", calc);
+		return mv;
+
+	}
+
+	// RequestMapping to subtract from the accumulated memory
+	@RequestMapping("/memsub")
+	public ModelAndView memorySub() {
+		calc.removeMemory(result);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("calculator");
+		mv.addObject("result", result);
+		mv.addObject("calculator", calc);
+		return mv;
+
+	}
+
+	// RequestMapping to clear the accumulated memory
+	@RequestMapping("/memclear")
+	public ModelAndView memoryClear() {
+		calc.clearMemory();
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("calculator");
+		mv.addObject("result", result);
+		mv.addObject("calculator", calc);
+		return mv;
+
+	}
+
+	// RequestMapping to recall the accumulated memory
+	@RequestMapping("/memrecall")
+	public ModelAndView memoryRecall() {
+		result = calc.getMemory();
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("calculator");
+		mv.addObject("result", result);
+		mv.addObject("calculator", calc);
+		return mv;
+
 	}
 
 }

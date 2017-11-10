@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Calculator {
 	// Declare and ArrayList (type Results) to store the results history
 	private ArrayList<Results> resultList;
+	private double memory;
 
 	// Constructor - instantiate the resultsList variable to a new ArrayList
 	public Calculator() {
@@ -43,24 +44,38 @@ public class Calculator {
 		return result;
 	}
 
-	// Method to get the list of past results
-	// Collections (java.util) method is used to return the ArrayList contents in
-	// reverse order
-	public ArrayList<Results> getResultList() {
-		return resultList;
-	}
-
 	// Method to add a result to the Results ArrayList, which keeps track of all
 	// results
-	//Adds result to the first index in the ArrayList (index 0)
+	// Adds result to the first index in the ArrayList (index 0)
 	public void addResult(Results result) {
-		resultList.add(0,result);
+		resultList.add(0, result);
 
 	}
 
-	//Method to clear the ResultList Array, which cleats the history of calculations performed
+	// Method to clear the ResultList Array, which cleats the history of
+	// calculations performed
 	public void clearHistory() {
 		resultList.clear();
+	}
+
+	// Adds passed double amount to the accumulated memory
+	public void addMemory(double memory) {
+		this.memory += memory;
+	}
+
+	// Removes passed double amount from accumulated memory
+	public void removeMemory(double memory) {
+		this.memory -= memory;
+	}
+
+	// Clears the Accumulated memory
+	public void clearMemory() {
+		memory = 0;
+	}
+
+	// method which gets the current value stored in Memory
+	public double getMemory() {
+		return memory;
 	}
 
 }

@@ -8,20 +8,22 @@
 	<h1>Calculator Fun Time!! :)</h1>
 	<form method="post" action="calculate">
 		<input type="number" name="firstNumber" step="0.01" required>
-		<br>
-		<select name="op">
+		<br> <select name="op">
 			<option>+</option>
 			<option>-</option>
 			<option>*</option>
 			<option>/</option>
 			<option>^</option>
-		</select>
-		<br> 
-		<input type="number" name="secondNumber" step="0.01"
+		</select> <br> <input type="number" name="secondNumber" step="0.01"
 			required><br>
 		<button type="submit">Submit</button>
 	</form>
 	<p>Result is: {{ result }}</p>
+	<br>
+	<h2>Calculation History</h2>
+	<form method="post" action="/clear">
+		<button type="submit">Clear History</button>
+	</form>
 	<table border="1">
 		<thead>
 			<tr>
@@ -42,11 +44,5 @@
 			{{/resultList}}
 		</tbody>
 	</table>
-</body>
-
-
-
-
-
 </body>
 </html>

@@ -5,13 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lmig.gfc.calculator.models.Calculator;
-import com.lmig.gfc.calculator.models.Results;
 
 //Controller class for the Calculator application
 @Controller
 public class CalculatorController {
-	// declare double variable to store the result of the calculation
-	double result;
 
 	// declare and instantiate an instance of the Calculator class
 	private Calculator calc = new Calculator();
@@ -23,11 +20,9 @@ public class CalculatorController {
 	@RequestMapping("/")
 	public ModelAndView calculator() {
 		ModelAndView mv = new ModelAndView();
-		clearHistory(); //Clear the history when navigating back to "/"
-		memoryClear();  //Clear the memory when navigating back to "/"
-		result = 0; //Set result = 0 when navigating back to "/"
+		clearHistory(); // Clear the history when navigating back to "/"
+		memoryClear(); // Clear the memory when navigating to "/"
 		mv.setViewName("calculator");
-		mv.addObject("result", result);
 		mv.addObject("calculator", calc);
 		return mv;
 	}
@@ -39,25 +34,32 @@ public class CalculatorController {
 	// Creates a new instance of Results to store the information about the result
 	// Calls a method on the Calculator class to add the result to history
 	// sets view and adds appropriate data to the ModelAndView instance
-	@RequestMapping("/calculate")
-	public ModelAndView calculate(String op, double firstNumber, double secondNumber) {
-		result = calc.calculate(op, firstNumber, secondNumber);
-		Results resultAdd = new Results(firstNumber, secondNumber, result, op);
-		calc.addResult(resultAdd);
+	//This RequestMapping is called when two-argument math
+	@RequestMapping("/calculateTwo")
+	public ModelAndView calculateTwo(String op, double firstNumber, double secondNumber) {
+		calc.calculate(op, firstNumber, secondNumber);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
-		mv.addObject("result", result);
 		mv.addObject("calculator", calc);
 		return mv;
 	}
 
+	//This RequestMapping is called when one-argument math
+	@RequestMapping("/calculateOne")
+	public ModelAndView calculateTwo(String op, double firstNumber) {
+		calc.calculate(op, firstNumber);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("calculator");
+		mv.addObject("calculator", calc);
+		return mv;
+	}	
+	
 	// RequestMapping to clear the ArrayList containing history
 	@RequestMapping("/clear")
 	public ModelAndView clearHistory() {
 		calc.clearHistory();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
-		mv.addObject("result", result);
 		mv.addObject("calculator", calc);
 		return mv;
 	}
@@ -65,10 +67,9 @@ public class CalculatorController {
 	// RequestMapping to add to the accumulated memory
 	@RequestMapping("/memadd")
 	public ModelAndView memoryAdd() {
-		calc.addMemory(result);
+		calc.addMemory();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
-		mv.addObject("result", result);
 		mv.addObject("calculator", calc);
 		return mv;
 
@@ -77,10 +78,9 @@ public class CalculatorController {
 	// RequestMapping to subtract from the accumulated memory
 	@RequestMapping("/memsub")
 	public ModelAndView memorySub() {
-		calc.removeMemory(result);
+		calc.removeMemory();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
-		mv.addObject("result", result);
 		mv.addObject("calculator", calc);
 		return mv;
 
@@ -92,7 +92,6 @@ public class CalculatorController {
 		calc.clearMemory();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
-		mv.addObject("result", result);
 		mv.addObject("calculator", calc);
 		return mv;
 
@@ -101,10 +100,9 @@ public class CalculatorController {
 	// RequestMapping to recall the accumulated memory
 	@RequestMapping("/memrecall")
 	public ModelAndView memoryRecall() {
-		result = calc.getMemory();
+		calc.getMemory();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("calculator");
-		mv.addObject("result", result);
 		mv.addObject("calculator", calc);
 		return mv;
 

@@ -7,7 +7,10 @@ import java.util.ArrayList;
 public class Calculator {
 	// Declare and ArrayList (type Results) to store the results history
 	private ArrayList<Results> resultList;
+	// variable to hold the memory for the calculator
 	private double memory;
+	// variable to hold the calculated result
+	double result;
 
 	// Constructor - instantiate the resultsList variable to a new ArrayList
 	public Calculator() {
@@ -20,9 +23,11 @@ public class Calculator {
 	// type must be double in case of any decimals in the math
 	// Switch statement sets the result variable to the correct result, based on
 	// operator passed
+	// creates a new instance of the Results class and passes to the addResult
+	// method
+	//This method calculates the product of two numbers
 
-	public double calculate(String op, double firstNumber, double secondNumber) {
-		double result = 0;
+	public void calculate(String op, double firstNumber, double secondNumber) {
 		switch (op) {
 		case "+":
 			result = firstNumber + secondNumber;
@@ -40,8 +45,23 @@ public class Calculator {
 			result = Math.pow(firstNumber, secondNumber);
 			break;
 		}
-
-		return result;
+		addResult(new Results(firstNumber, secondNumber, result, op));
+	}
+	
+	//This method calculates the product of one number
+	public void calculate(String op, double firstNumber) {
+		switch (op) {
+		case "sin":
+			result = Math.sin(firstNumber);
+			break;
+		case "cos":
+			result = Math.cos(firstNumber);
+			break;
+		case "tan":
+			result = Math.tan(firstNumber);
+			break;
+		}
+		addResult(new Results(firstNumber, 0, result, op));
 	}
 
 	// Method to add a result to the Results ArrayList, which keeps track of all
@@ -52,20 +72,20 @@ public class Calculator {
 
 	}
 
-	// Method to clear the ResultList Array, which cleats the history of
+	// Method to clear the ResultList Array, which clears the history of
 	// calculations performed
 	public void clearHistory() {
 		resultList.clear();
 	}
 
-	// Adds passed double amount to the accumulated memory
-	public void addMemory(double memory) {
-		this.memory += memory;
+	// Adds the last calculated result to the memory
+	public void addMemory() {
+		memory += result;
 	}
 
-	// Removes passed double amount from accumulated memory
-	public void removeMemory(double memory) {
-		this.memory -= memory;
+	// Removes last calculated result from the memory
+	public void removeMemory() {
+		memory -= result;
 	}
 
 	// Clears the Accumulated memory
@@ -73,9 +93,10 @@ public class Calculator {
 		memory = 0;
 	}
 
-	// method which gets the current value stored in Memory
-	public double getMemory() {
-		return memory;
+	// method which gets the current value stored in Memory, and sets it to the
+	// result, so the user can see the current amount in memory
+	public void getMemory() {
+		result = memory;
 	}
 
 }

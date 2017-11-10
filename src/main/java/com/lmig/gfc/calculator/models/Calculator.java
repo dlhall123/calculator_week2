@@ -1,6 +1,7 @@
 package com.lmig.gfc.calculator.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 //This class calculates the product of two numbers, based on the data received from the consumer (controller)
@@ -43,7 +44,9 @@ public class Calculator {
 	}
 	
 	//Method to get the list of past results
+	//Collections (java.util) method is used to return the ArrayList contents in reverse order
 	public ArrayList<Results> getResultList() {
+		Collections.reverse(resultList);
 		return resultList;
 	}
 	

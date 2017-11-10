@@ -7,14 +7,18 @@
 <body>
 	<h1>Calculator Fun Time!! :)</h1>
 	<form method="post" action="calculate">
-		<input type="number" name="firstNumber" step="0.01" required><br> <select
-			name="op">
+		<input type="number" name="firstNumber" step="0.01" required>
+		<br>
+		<select name="op">
 			<option>+</option>
 			<option>-</option>
 			<option>*</option>
 			<option>/</option>
 			<option>^</option>
-		</select><br> <input type="number" name="secondNumber" step="0.01" required><br>
+		</select>
+		<br> 
+		<input type="number" name="secondNumber" step="0.01"
+			required><br>
 		<button type="submit">Submit</button>
 	</form>
 	<p>Result is: {{ result }}</p>

@@ -8,7 +8,7 @@ import com.lmig.gfc.calculator.models.Calculator;
 
 //Controller class for the Calculator application
 @Controller
-public class CalculatorController {
+public class CalculatorController { 
 
 	// declare a variable to store an instance of the Calculator class
 	private Calculator calc; 

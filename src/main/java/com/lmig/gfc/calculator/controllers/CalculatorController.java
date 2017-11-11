@@ -34,8 +34,7 @@ public class CalculatorController {
 	// Creates a new instance of Results to store the information about the result
 	// Calls a method on the Calculator class to add the result to history
 	// sets view and adds appropriate data to the ModelAndView instance
-	//This RequestMapping is called when two-argument math
-	@RequestMapping("/calculateTwo")
+	@RequestMapping("/calculate")
 	public ModelAndView calculateTwo(String op, double firstNumber, double secondNumber) {
 		calc.calculate(op, firstNumber, secondNumber);
 		ModelAndView mv = new ModelAndView();
@@ -44,16 +43,6 @@ public class CalculatorController {
 		return mv;
 	}
 
-	//This RequestMapping is called when one-argument math
-	@RequestMapping("/calculateOne")
-	public ModelAndView calculateTwo(String op, double firstNumber) {
-		calc.calculate(op, firstNumber);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("calculator");
-		mv.addObject("calculator", calc);
-		return mv;
-	}	
-	
 	// RequestMapping to clear the ArrayList containing history
 	@RequestMapping("/clear")
 	public ModelAndView clearHistory() {

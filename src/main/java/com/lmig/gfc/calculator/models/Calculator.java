@@ -5,10 +5,13 @@ import java.util.ArrayList;
 //This class calculates the product of two numbers, based on the data received from the consumer (controller)
 //this class also maintains a list of past results for the purpose of history tracking
 public class Calculator {
+	
 	// Declare and ArrayList (type Results) to store the results history
 	private ArrayList<Results> resultList;
+	
 	// variable to hold the memory for the calculator
 	private double memory;
+	
 	// variable to hold the calculated result
 	double result;
 
@@ -19,16 +22,16 @@ public class Calculator {
 
 	// calculates the result of the operation, and returns back the result
 	// accepts the information input on the screen by the user from the controller
-	// returns a double (result) to the controller to sent to the view to display;
 	// type must be double in case of any decimals in the math
 	// Switch statement sets the result variable to the correct result, based on
 	// operator passed
 	// creates a new instance of the Results class and passes to the addResult
 	// method
-	//This method calculates the product of two numbers
 
 	public void calculate(String op, double firstNumber, double secondNumber) {
 		switch (op) {
+		
+		//Two argument calculations
 		case "+":
 			result = firstNumber + secondNumber;
 			break;
@@ -44,13 +47,11 @@ public class Calculator {
 		case "^":
 			result = Math.pow(firstNumber, secondNumber);
 			break;
-		}
-		addResult(new Results(firstNumber, secondNumber, result, op));
-	}
-	
-	//This method calculates the product of one number
-	public void calculate(String op, double firstNumber) {
-		switch (op) {
+		case "roots":
+			result = Math.pow(firstNumber, (1/secondNumber));
+			break;
+		
+		//One Argument calculations
 		case "sin":
 			result = Math.sin(firstNumber);
 			break;
@@ -60,8 +61,20 @@ public class Calculator {
 		case "tan":
 			result = Math.tan(firstNumber);
 			break;
+		case "sinh":
+			result = Math.sinh(firstNumber);
+			break;
+		case "cosh":
+			result = Math.cosh(firstNumber);
+			break;
+		case "tanh":
+			result = Math.tanh(firstNumber);
+			break;
+		case "ln":
+			result = Math.log(firstNumber);
+			break;
 		}
-		addResult(new Results(firstNumber, 0, result, op));
+		addResult(new Results(firstNumber, secondNumber, result, op));
 	}
 
 	// Method to add a result to the Results ArrayList, which keeps track of all
@@ -97,6 +110,16 @@ public class Calculator {
 	// result, so the user can see the current amount in memory
 	public void getMemory() {
 		result = memory;
+	}
+
+	// Getters for view to access
+
+	public double getResult() {
+		return result;
+	}
+
+	public ArrayList<Results> getResultList() {
+		return resultList;
 	}
 
 }

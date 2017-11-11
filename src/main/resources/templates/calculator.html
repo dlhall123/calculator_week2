@@ -6,8 +6,8 @@
 </head>
 <body>
 	<h1>Calculator Fun Time!! :)</h1>
-	<h2>Two Function Calculations:</h2>
-	<form method="post" action="calculateTwo">
+	<h2>Two Argument Calculations:</h2>
+	<form method="post" action="calculate">
 		<input type="number" name="firstNumber" step="0.01" required>
 		<br> <select name="op">
 			<option>+</option>
@@ -15,21 +15,27 @@
 			<option>*</option>
 			<option>/</option>
 			<option>^</option>
+			<option>roots</option>
 		</select> <br> <input type="number" name="secondNumber" step="0.01"
 			required><br>
 		<button type="submit">Submit</button>
 	</form>
-	<h2>One Function Calculations:</h2>
-	<form method="post" action="calculateOne">
+	<h2>One Argument Calculations:</h2>
+	<form method="post" action="calculate">
 	<input type="number" name="firstNumber" step="0.01" required>
+	<input type="hidden" name="secondNumber" value="0"> <!-- Adding hidden field to pass zero for secondNumber back to controller -->
 	<select name="op">
 			<option>sin</option>
 			<option>cos</option>
 			<option>tan</option>
+			<option>sinh</option>
+			<option>cosh</option>
+			<option>tanh</option>
+			<option>ln</option>
 		</select>
 		<button type="submit">Submit</button>
 	</form>
-	<p>Result is: {{ calculator.result }}</p>
+	<p>Result is: {{ calculator.getResult }}</p>
 	<form method="post" action="memAdd">
 		<button>M+</button>
 	</form>
@@ -57,14 +63,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#calculator.resultList}}
+			{{#calculator.getResultList}}
 			<tr>
 				<td>{{ firstNumber }}</td>
 				<td>{{ op }}</td>
 				<td>{{ secondNumber }}</td>
 				<td>{{ result }}</td>
 			</tr>
-			{{/calculator.resultList}}
+			{{/calculator.getResultList}}
 		</tbody>
 	</table>
 </body>

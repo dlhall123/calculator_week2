@@ -10,9 +10,13 @@ import com.lmig.gfc.calculator.models.Calculator;
 @Controller
 public class CalculatorController {
 
-	// declare and instantiate an instance of the Calculator class
-	private Calculator calc = new Calculator();
-
+	// declare a variable to store an instance of the Calculator class
+	private Calculator calc; 
+	
+	//Contructor - create an instance of Calculator class and assign to calc variable
+	public CalculatorController() {
+	calc = new Calculator();
+	}
 	// RequestMapping for when the user navigates to localhost:8080
 	// Creates and instance of the ModelAndView class and returns it
 	// Sets the view to calculator.html

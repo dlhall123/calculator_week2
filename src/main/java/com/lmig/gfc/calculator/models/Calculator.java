@@ -107,7 +107,7 @@ public class Calculator {
 	}
 
 	// method which gets the current value stored in Memory, and sets it to the
-	// result, so the user can see the current amount in memory
+	// result, so the user can see the current amount in memory in the result display
 	public void getMemory() {
 		result = memory;
 	}

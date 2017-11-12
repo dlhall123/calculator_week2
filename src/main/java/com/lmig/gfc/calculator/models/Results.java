@@ -1,8 +1,8 @@
 package com.lmig.gfc.calculator.models;
 
-//Class to house the calculations performed and results
+//Class to house the results of calculations performed
 public class Results {
-	// class-level variables to house calculation data
+	// class-level variables to house calculation results data
 	private double firstNumber;
 	private double secondNumber;
 	private double result;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 //this class also maintains a list of past results for the purpose of history tracking
 public class Calculator {
 	
-	// Declare and ArrayList (type Results) to store the results history
+	// Declare an ArrayList (type Results) to store the results history
 	private ArrayList<Results> resultList;
 	
 	// variable to hold the memory for the calculator

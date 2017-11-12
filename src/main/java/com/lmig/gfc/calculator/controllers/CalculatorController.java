@@ -33,9 +33,6 @@ public class CalculatorController {
 
 	// RequestMapping for when the form is submitted
 	// Instantiates a ModelAndView instance to be returned
-	// populates the result variable with the result from the Calculator class
-	// instance
-	// Creates a new instance of Results to store the information about the result
 	// Calls a method on the Calculator class to add the result to history
 	// sets view and adds appropriate data to the ModelAndView instance
 	@RequestMapping("/calculate")

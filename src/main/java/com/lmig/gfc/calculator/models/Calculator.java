@@ -104,6 +104,7 @@ public class Calculator {
 	// Clears the Accumulated memory
 	public void clearMemory() {
 		memory = 0;
+		result=0; //Adding to display zero on the result when memory is cleared
 	}
 
 	// method which gets the current value stored in Memory, and sets it to the

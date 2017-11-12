@@ -35,7 +35,7 @@
 		</select>
 		<button type="submit">Submit</button>
 	</form>
-	<p>Result is: {{ calculator.getResult }}</p>
+	<p>Result is: {{ calculator.result }}</p>
 	<form method="post" action="memAdd">
 		<button>M+</button>
 	</form>
@@ -63,14 +63,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#calculator.getResultList}}
+			{{#calculator.resultList}}
 			<tr>
 				<td>{{ firstNumber }}</td>
 				<td>{{ op }}</td>
 				<td>{{ secondNumber }}</td>
 				<td>{{ result }}</td>
 			</tr>
-			{{/calculator.getResultList}}
+			{{/calculator.resultList}}
 		</tbody>
 	</table>
 </body>

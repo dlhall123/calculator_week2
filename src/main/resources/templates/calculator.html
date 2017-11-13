@@ -10,12 +10,12 @@
 	<form method="post" action="calculate">
 		<input type="number" name="firstNumber" step="0.01" required>
 		<br> <select name="op">
-			<option>+</option>
-			<option>-</option>
-			<option>*</option>
-			<option>/</option>
-			<option>^</option>
-			<option>roots</option>
+			<option value = "+">+</option>
+			<option value = "-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			<option value="^">^</option>
+			<option value="roots">roots</option>
 		</select> <br> <input type="number" name="secondNumber" step="0.01"
 			required><br>
 		<button type="submit">Submit</button>
@@ -25,13 +25,13 @@
 	<input type="number" name="firstNumber" step="0.01" required>
 	<input type="hidden" name="secondNumber" value="0"> <!-- Adding hidden field to pass zero for secondNumber back to controller -->
 	<select name="op">
-			<option>sin</option>
-			<option>cos</option>
-			<option>tan</option>
-			<option>sinh</option>
-			<option>cosh</option>
-			<option>tanh</option>
-			<option>ln</option>
+			<option value="sin">sin</option>
+			<option value="cos">cos</option>
+			<option value="tan">tan</option>
+			<option value="sinh">sinh</option>
+			<option value="cosh">cosh</option>
+			<option value="tanh">tanh</option>
+			<option value="ln">ln</option>
 		</select>
 		<button type="submit">Submit</button>
 	</form>
